@@ -13,7 +13,7 @@ import fs from "fs";
 import net from "net";
 import path from "path";
 import { fileURLToPath } from "url";
-import { scanAction } from "../actions/scanAction.ts";
+import { scanAction } from "./actions/scanAction.ts";
 import { initializeDbCache } from "./cache/index.ts";
 import { character } from "./character.ts";
 import { startChat } from "./chat/index.ts";
