@@ -2,7 +2,7 @@ services:
   eliza:
     platform: linux/amd64
     command: ["pnpm", "start", "--character=./characters/eliza.character.json"]
-    image: ghcr.io/ningxzx/my-image:latest
+    image: ghcr.io/ningxzx/matrix-eliza:f3f50265bc6ca22f2daca9ddf8a8a10508f9768b@sha256:a8e7aac89f8f779d3e2389e5a273cfa04ca75ed779d62746fba8661804680494
     stdin_open: true
     tty: true
     volumes:
