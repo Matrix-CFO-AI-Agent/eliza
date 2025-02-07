@@ -1,9 +1,9 @@
-name: Build and Push Docker Image to GHCR
+name: Build and Push Multi-Arch Docker Image to GHCR
 
 on:
   push:
     branches:
-      - main # Adjust as needed
+      - main # 触发构建的分支
 
 jobs:
   build-and-push:
@@ -17,15 +17,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Build and Tag Docker Image
+      - name: Build and Push Multi-Arch Docker Image
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/my-image
-          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:${{ github.sha }} .
-
-      - name: Push Docker Image
-        run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/my-image
-          docker push $IMAGE_NAME --all-tags
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/matrix-eliza
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --tag $IMAGE_NAME:latest \
+            --tag $IMAGE_NAME:${{ github.sha }} \
+            --push .
