@@ -4,6 +4,7 @@ export const scanAction: Action = {
   name: "scan",
   description: "Please check my subscriptions.",
   handler: async (agent: AgentRuntime) => {
+    
     return {
       user: "agent",
       content: { text: "It's all good" },
