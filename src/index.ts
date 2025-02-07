@@ -14,6 +14,7 @@ import net from "net";
 import path from "path";
 import { fileURLToPath } from "url";
 import { scanAction } from "./actions/scanAction.ts";
+import { customAction } from "./actions/testActions.ts";
 import { initializeDbCache } from "./cache/index.ts";
 import { character } from "./character.ts";
 import { startChat } from "./chat/index.ts";
@@ -62,7 +63,7 @@ export function createAgent(
       character.settings?.secrets?.WALLET_PUBLIC_KEY ? solanaPlugin : null,
     ].filter(Boolean),
     providers: [timeProvider],
-    actions: [scanAction],
+    actions: [scanAction, customAction],
     services: [],
     managers: [],
     cacheManager: cache,
