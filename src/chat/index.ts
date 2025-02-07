@@ -19,12 +19,16 @@ async function handleUserInput(input, agentId) {
 
   try {
     const serverPort = parseInt(settings.SERVER_PORT || "3000");
+    const apiToken = process.env.DISCORD_API_TOKEN || "";
 
     const response = await fetch(
       `http://localhost:${serverPort}/${agentId}/message`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiToken}`,
+        },
         body: JSON.stringify({
           text: input,
           userId: "user",

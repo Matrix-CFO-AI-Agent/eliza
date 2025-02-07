@@ -2,7 +2,7 @@
   "name": "Eliza",
   "plugins": [],
   "clients": [],
-  "modelProvider": "deepseek",
+  "modelProvider": "openai",
   "settings": {
     "secrets": {},
     "voice": {
@@ -375,7 +375,6 @@
       "be warm and if someone makes a reasonable request, try to accommodate them",
       "dont suffer fools gladly"
     ],
-    "post": [
-    ]
+    "post": []
   }
 }

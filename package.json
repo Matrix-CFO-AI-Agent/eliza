@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
     "start": "tsc && node --loader ts-node/esm src/index.ts",
+    "contract-example": "tsc && node --loader ts-node/esm src/example.ts",
     "clean": "./scripts/clean.sh",
     "start:service:all": "pm2 start pnpm --name=\"all\" --restart-delay=3000 --max-restarts=10 -- run start:all",
     "stop:service:all": "pm2 stop all"
@@ -23,6 +24,7 @@
     "@elizaos/plugin-node": "0.1.9",
     "@elizaos/plugin-solana": "0.1.9",
     "@elizaos/plugin-starknet": "0.1.9",
+    "@mysten/sui": "^1.21.1",
     "@tavily/core": "0.0.2",
     "amqplib": "0.10.5",
     "better-sqlite3": "11.8.1",
