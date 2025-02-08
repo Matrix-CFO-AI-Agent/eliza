@@ -8,7 +8,6 @@ services:
     volumes:
       - ./data:/app/data
     environment:
-      - OPENAI_API_KEY=sk-RFajRhKp5BukHv6MzCZtUTl2MkOTkG0hZLgdoT4Kjefy99NL
       - OPENAI_API_URL= https://api.feidaapi.com/v1
       - DISCORD_APPLICATION_ID=
       - DISCORD_API_TOKEN=
